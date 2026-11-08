@@ -1,33 +1,26 @@
+using System.Text.Json.Serialization;
+
 namespace WestcoastEducation.Models;
 
 /// <summary>Abstrakt basklass med gemensam data för alla personer.</summary>
 public abstract class Person
 {
-    public string FirstName { get; }
-    public string LastName { get; }
-    public string Phone { get; }
-    public string PersonalNumber { get; }
+    /// <summary>RestDb.io:s unika id för posten.</summary>
+    [JsonPropertyName("_id")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Id { get; set; }
 
-    // KOMPOSITION: adressen skapas här inne av Person och delas inte med andra.
-    public Address Address { get; }
+    public string FirstName { get; set; } = "";
+    public string LastName { get; set; } = "";
+    public string Phone { get; set; } = "";
+    public string PersonalNumber { get; set; } = "";
+    public string Street { get; set; } = "";
+    public string PostalCode { get; set; } = "";
+    public string City { get; set; } = "";
 
-    protected Person(string firstName, string lastName, string phone, string personalNumber,
-        string street, string postalCode, string city)
-    {
-        if (string.IsNullOrWhiteSpace(personalNumber))
-            throw new ArgumentException("Personnummer får inte vara tomt.");
-        if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
-            throw new ArgumentException("Förnamn och efternamn måste anges.");
-
-        FirstName = firstName.Trim();
-        LastName = lastName.Trim();
-        Phone = phone.Trim();
-        PersonalNumber = personalNumber.Trim();
-        Address = new Address(street.Trim(), postalCode.Trim(), city.Trim());
-    }
-
+    [JsonIgnore]
     public string FullName => $"{FirstName} {LastName}";
 
-    public override string ToString() =>
-        $"{FullName} (personnr {PersonalNumber}, tel {Phone}, adress {Address})";
+    [JsonIgnore]
+    public string AddressText => $"{Street}, {PostalCode} {City}";
 }

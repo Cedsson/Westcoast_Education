@@ -1,0 +1,121 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:WestcoastEducation.ViewModels"
+             xmlns:m="using:WestcoastEducation.Models"
+             x:Class="WestcoastEducation.Views.TeachersView"
+             x:DataType="vm:TeachersViewModel"
+             x:Name="Root">
+
+  <DockPanel>
+    <Grid DockPanel.Dock="Top" ColumnDefinitions="*,Auto" Margin="0,0,0,16">
+      <StackPanel>
+        <TextBlock Classes="h1" Text="Lärare" />
+        <TextBlock Classes="muted" Text="Lista och registrera lärare samt hantera deras kompetensområden." />
+      </StackPanel>
+      <Button Grid.Column="1" Content="Uppdatera" Command="{Binding RefreshCommand}" VerticalAlignment="Center" />
+    </Grid>
+
+    <Grid ColumnDefinitions="*,20,320">
+
+      <Grid Grid.Column="0" RowDefinitions="*,16,Auto">
+
+        <!-- Lärarlista -->
+        <Border Classes="card" Grid.Row="0">
+          <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Classes="h2" Text="Alla lärare" />
+            <ListBox ItemsSource="{Binding Teachers}" SelectedItem="{Binding SelectedTeacher}">
+              <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="m:Teacher">
+                  <StackPanel>
+                    <TextBlock Text="{Binding FullName}" FontWeight="SemiBold" />
+                    <TextBlock Classes="muted" FontSize="12">
+                      <Run Text="{Binding PersonalNumber}" />
+                      <Run Text="  ·  " />
+                      <Run Text="{Binding Phone}" />
+                    </TextBlock>
+                    <TextBlock Text="{Binding ExpertiseText}" FontSize="12"
+                               Foreground="{DynamicResource PrimaryBrush}" />
+                  </StackPanel>
+                </DataTemplate>
+              </ListBox.ItemTemplate>
+            </ListBox>
+          </DockPanel>
+        </Border>
+
+        <!-- Kompetensområden för vald lärare -->
+        <Border Classes="card" Grid.Row="2">
+          <StackPanel>
+            <TextBlock Classes="h2" Text="Kompetensområden" />
+            <TextBlock Classes="muted" Text="Välj en lärare i listan ovan."
+                       IsVisible="{Binding !HasSelectedTeacher}" />
+
+            <StackPanel IsVisible="{Binding HasSelectedTeacher}">
+              <TextBlock Text="{Binding SelectedTeacher.FullName}" FontWeight="SemiBold" Margin="0,0,0,8" />
+
+              <ItemsControl ItemsSource="{Binding SelectedExpertise}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <WrapPanel />
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate x:DataType="x:String">
+                    <Border Classes="chip">
+                      <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" VerticalAlignment="Center" />
+                        <Button Classes="chipRemove" Content="✕"
+                                ToolTip.Tip="Ta bort kompetensområde"
+                                Command="{Binding #Root.((vm:TeachersViewModel)DataContext).RemoveExpertiseCommand}"
+                                CommandParameter="{Binding}" />
+                      </StackPanel>
+                    </Border>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+
+              <Grid ColumnDefinitions="*,10,Auto" Margin="0,6,0,0">
+                <TextBox Text="{Binding NewExpertise}" Watermark="Nytt kompetensområde, t.ex. Python" />
+                <Button Grid.Column="2" Classes="primary" Content="Lägg till"
+                        Command="{Binding AddExpertiseCommand}" />
+              </Grid>
+            </StackPanel>
+          </StackPanel>
+        </Border>
+      </Grid>
+
+      <!-- Formulär -->
+      <Border Classes="card" Grid.Column="2" VerticalAlignment="Top">
+        <StackPanel>
+          <TextBlock Classes="h2" Text="Lägg till lärare" />
+
+          <TextBlock Classes="label" Text="Förnamn" />
+          <TextBox Text="{Binding FirstName}" />
+          <TextBlock Classes="label" Text="Efternamn" />
+          <TextBox Text="{Binding LastName}" />
+          <TextBlock Classes="label" Text="Personnummer" />
+          <TextBox Text="{Binding PersonalNumber}" Watermark="ååmmdd-xxxx" />
+          <TextBlock Classes="label" Text="Telefon" />
+          <TextBox Text="{Binding Phone}" />
+          <TextBlock Classes="label" Text="Gatuadress" />
+          <TextBox Text="{Binding Street}" />
+          <Grid ColumnDefinitions="110,10,*">
+            <StackPanel>
+              <TextBlock Classes="label" Text="Postnummer" />
+              <TextBox Text="{Binding PostalCode}" />
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+              <TextBlock Classes="label" Text="Ort" />
+              <TextBox Text="{Binding City}" />
+            </StackPanel>
+          </Grid>
+          <TextBlock Classes="label" Text="Kompetensområden (kommaseparerade)" />
+          <TextBox Text="{Binding InitialExpertise}" Watermark="C#, Databaser" />
+
+          <Button Classes="primary" Content="Lägg till lärare" Margin="0,16,0,0"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                  Command="{Binding AddTeacherCommand}" />
+        </StackPanel>
+      </Border>
+    </Grid>
+  </DockPanel>
+</UserControl>

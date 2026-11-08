@@ -1,0 +1,8 @@
+[
+  { "firstName": "Maja", "lastName": "Karlsson", "phone": "073-1000001", "personalNumber": "950505-1111", "street": "Vasagatan 2A", "postalCode": "411 24", "city": "Göteborg" },
+  { "firstName": "Oskar", "lastName": "Holm", "phone": "073-1000002", "personalNumber": "960606-2222", "street": "Linnégatan 7B", "postalCode": "413 14", "city": "Göteborg" },
+  { "firstName": "Sara", "lastName": "Ek", "phone": "073-1000003", "personalNumber": "970707-3333", "street": "Allén 4A", "postalCode": "412 55", "city": "Göteborg" },
+  { "firstName": "Jonas", "lastName": "Dahl", "phone": "073-1000004", "personalNumber": "980808-4444", "street": "Parkvägen 9B", "postalCode": "412 60", "city": "Göteborg" },
+  { "firstName": "Elin", "lastName": "Wallin", "phone": "073-1000005", "personalNumber": "990909-5555", "street": "Skolgatan 6A", "postalCode": "413 22", "city": "Göteborg" },
+  { "firstName": "Karl", "lastName": "Persson", "phone": "073-1000006", "personalNumber": "000101-6666", "street": "Backgatan 8B", "postalCode": "414 70", "city": "Göteborg" }
+]

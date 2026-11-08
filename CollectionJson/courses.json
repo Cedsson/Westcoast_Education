@@ -1,0 +1,6 @@
+[
+  { "courseNumber": "C101", "title": "Grundkurs i C#", "startDate": "2026-11-22T00:00:00", "endDate": "2027-01-01T00:00:00", "type": "Klassrum" },
+  { "courseNumber": "W201", "title": "Webbutveckling", "startDate": "2027-01-07T00:00:00", "endDate": "2027-03-08T00:00:00", "type": "Distans" },
+  { "courseNumber": "D301", "title": "Databaser med SQL", "startDate": "2027-02-06T00:00:00", "endDate": "2027-03-18T00:00:00", "type": "Klassrum" },
+  { "courseNumber": "P401", "title": "Projektledning", "startDate": "2026-11-28T00:00:00", "endDate": "2026-12-23T00:00:00", "type": "Distans" }
+]

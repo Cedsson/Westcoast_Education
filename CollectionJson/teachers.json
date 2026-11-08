@@ -1,0 +1,5 @@
+[
+  { "firstName": "Anna", "lastName": "Svensson", "phone": "070-1112233", "personalNumber": "800101-1234", "street": "Storgatan 1A", "postalCode": "411 38", "city": "Göteborg", "expertise": ["C#", "Databaser"] },
+  { "firstName": "Erik", "lastName": "Lindgren", "phone": "070-2223344", "personalNumber": "790202-2345", "street": "Kungsgatan 5B", "postalCode": "411 19", "city": "Göteborg", "expertise": ["Webbutveckling", "JavaScript"] },
+  { "firstName": "Lisa", "lastName": "Berg", "phone": "070-3334455", "personalNumber": "750303-3456", "street": "Avenyn 10A", "postalCode": "411 36", "city": "Göteborg", "expertise": ["Projektledning"] }
+]

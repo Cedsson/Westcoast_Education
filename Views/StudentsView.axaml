@@ -1,0 +1,73 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:WestcoastEducation.ViewModels"
+             xmlns:m="using:WestcoastEducation.Models"
+             x:Class="WestcoastEducation.Views.StudentsView"
+             x:DataType="vm:StudentsViewModel">
+
+  <DockPanel>
+    <Grid DockPanel.Dock="Top" ColumnDefinitions="*,Auto" Margin="0,0,0,16">
+      <StackPanel>
+        <TextBlock Classes="h1" Text="Studenter" />
+        <TextBlock Classes="muted" Text="Lista och registrera studerande." />
+      </StackPanel>
+      <Button Grid.Column="1" Content="Uppdatera" Command="{Binding RefreshCommand}" VerticalAlignment="Center" />
+    </Grid>
+
+    <Grid ColumnDefinitions="*,20,320">
+
+      <Border Classes="card" Grid.Column="0">
+        <DockPanel>
+          <TextBlock DockPanel.Dock="Top" Classes="h2" Text="Alla studenter" />
+          <ListBox ItemsSource="{Binding Students}">
+            <ListBox.ItemTemplate>
+              <DataTemplate x:DataType="m:Student">
+                <StackPanel>
+                  <TextBlock Text="{Binding FullName}" FontWeight="SemiBold" />
+                  <TextBlock Classes="muted" FontSize="12">
+                    <Run Text="{Binding PersonalNumber}" />
+                    <Run Text="  ·  " />
+                    <Run Text="{Binding Phone}" />
+                    <Run Text="  ·  " />
+                    <Run Text="{Binding AddressText}" />
+                  </TextBlock>
+                </StackPanel>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+        </DockPanel>
+      </Border>
+
+      <Border Classes="card" Grid.Column="2" VerticalAlignment="Top">
+        <StackPanel>
+          <TextBlock Classes="h2" Text="Lägg till student" />
+
+          <TextBlock Classes="label" Text="Förnamn" />
+          <TextBox Text="{Binding FirstName}" />
+          <TextBlock Classes="label" Text="Efternamn" />
+          <TextBox Text="{Binding LastName}" />
+          <TextBlock Classes="label" Text="Personnummer" />
+          <TextBox Text="{Binding PersonalNumber}" Watermark="ååmmdd-xxxx" />
+          <TextBlock Classes="label" Text="Telefon" />
+          <TextBox Text="{Binding Phone}" />
+          <TextBlock Classes="label" Text="Gatuadress" />
+          <TextBox Text="{Binding Street}" />
+          <Grid ColumnDefinitions="110,10,*">
+            <StackPanel>
+              <TextBlock Classes="label" Text="Postnummer" />
+              <TextBox Text="{Binding PostalCode}" />
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+              <TextBlock Classes="label" Text="Ort" />
+              <TextBox Text="{Binding City}" />
+            </StackPanel>
+          </Grid>
+
+          <Button Classes="primary" Content="Lägg till student" Margin="0,16,0,0"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                  Command="{Binding AddStudentCommand}" />
+        </StackPanel>
+      </Border>
+    </Grid>
+  </DockPanel>
+</UserControl>

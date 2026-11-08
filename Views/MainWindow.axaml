@@ -1,0 +1,57 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:WestcoastEducation.ViewModels"
+        x:Class="WestcoastEducation.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="WestCoast Education – Administration"
+        Width="1200" Height="760" MinWidth="900" MinHeight="560"
+        WindowStartupLocation="CenterScreen">
+
+  <Grid ColumnDefinitions="220,*">
+
+    <!-- Sidomeny -->
+    <Border Grid.Column="0" Background="{DynamicResource SidebarBrush}">
+      <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Margin="20,24,20,24" Spacing="2">
+          <TextBlock Text="WestCoast" FontSize="22" FontWeight="Bold"
+                     Foreground="{DynamicResource SidebarTextBrush}" />
+          <TextBlock Text="Education" FontSize="22" FontWeight="Light"
+                     Foreground="{DynamicResource AccentBrush}" />
+          <TextBlock Text="Administration" FontSize="12" Margin="0,6,0,0" Opacity="0.7"
+                     Foreground="{DynamicResource SidebarTextBrush}" />
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Bottom" Margin="20">
+          <ToggleSwitch IsChecked="{Binding IsDarkTheme}"
+                        OnContent="Mörkt tema" OffContent="Ljust tema"
+                        Foreground="{DynamicResource SidebarTextBrush}" />
+        </StackPanel>
+
+        <StackPanel>
+          <Button Classes="nav" Classes.active="{Binding IsCoursesActive}"
+                  Content="Kurser" Command="{Binding ShowCoursesCommand}" />
+          <Button Classes="nav" Classes.active="{Binding IsStudentsActive}"
+                  Content="Studenter" Command="{Binding ShowStudentsCommand}" />
+          <Button Classes="nav" Classes.active="{Binding IsTeachersActive}"
+                  Content="Lärare" Command="{Binding ShowTeachersCommand}" />
+        </StackPanel>
+      </DockPanel>
+    </Border>
+
+    <!-- Innehåll -->
+    <DockPanel Grid.Column="1">
+      <Border DockPanel.Dock="Bottom" Background="{DynamicResource SurfaceBrush}"
+              BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0,1,0,0" Padding="20,8">
+        <StackPanel Orientation="Horizontal" Spacing="10">
+          <ProgressBar IsIndeterminate="True" IsVisible="{Binding CurrentPage.IsBusy}"
+                       Width="80" VerticalAlignment="Center"
+                       Foreground="{DynamicResource PrimaryBrush}" />
+          <TextBlock Text="{Binding CurrentPage.StatusMessage}" VerticalAlignment="Center"
+                     Classes="muted" Classes.error="{Binding CurrentPage.HasError}" />
+        </StackPanel>
+      </Border>
+
+      <ContentControl Content="{Binding CurrentPage}" Margin="28,24" />
+    </DockPanel>
+  </Grid>
+</Window>

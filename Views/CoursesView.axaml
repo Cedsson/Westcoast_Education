@@ -1,0 +1,74 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:WestcoastEducation.ViewModels"
+             xmlns:m="using:WestcoastEducation.Models"
+             x:Class="WestcoastEducation.Views.CoursesView"
+             x:DataType="vm:CoursesViewModel">
+
+  <DockPanel>
+    <Grid DockPanel.Dock="Top" ColumnDefinitions="*,Auto" Margin="0,0,0,16">
+      <StackPanel>
+        <TextBlock Classes="h1" Text="Kurser" />
+        <TextBlock Classes="muted" Text="Lista, lägg till och radera kurser som inte längre är aktuella." />
+      </StackPanel>
+      <Button Grid.Column="1" Content="Uppdatera" Command="{Binding RefreshCommand}" VerticalAlignment="Center" />
+    </Grid>
+
+    <Grid ColumnDefinitions="*,20,320">
+
+      <!-- Kurslista -->
+      <Border Classes="card" Grid.Column="0">
+        <DockPanel>
+          <Grid DockPanel.Dock="Top" ColumnDefinitions="*,Auto" Margin="0,0,0,8">
+            <TextBlock Classes="h2" Text="Alla kurser" VerticalAlignment="Center" />
+            <Button Grid.Column="1" Classes="danger" Content="Radera vald kurs"
+                    Command="{Binding DeleteCourseCommand}" />
+          </Grid>
+          <ListBox ItemsSource="{Binding Courses}" SelectedItem="{Binding SelectedCourse}">
+            <ListBox.ItemTemplate>
+              <DataTemplate x:DataType="m:Course">
+                <Grid ColumnDefinitions="80,*,Auto">
+                  <TextBlock Text="{Binding CourseNumber}" FontWeight="Bold"
+                             Foreground="{DynamicResource PrimaryBrush}" VerticalAlignment="Center" />
+                  <StackPanel Grid.Column="1">
+                    <TextBlock Text="{Binding Title}" FontWeight="SemiBold" />
+                    <TextBlock Text="{Binding DateText}" Classes="muted" FontSize="12" />
+                  </StackPanel>
+                  <Border Grid.Column="2" Classes="chip" Padding="10,3" VerticalAlignment="Center" Margin="0">
+                    <TextBlock Text="{Binding Type}" FontSize="12" />
+                  </Border>
+                </Grid>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+        </DockPanel>
+      </Border>
+
+      <!-- Formulär -->
+      <Border Classes="card" Grid.Column="2" VerticalAlignment="Top">
+        <StackPanel>
+          <TextBlock Classes="h2" Text="Lägg till kurs" />
+
+          <TextBlock Classes="label" Text="Kursnummer" />
+          <TextBox Text="{Binding CourseNumber}" Watermark="t.ex. C101" />
+
+          <TextBlock Classes="label" Text="Titel" />
+          <TextBox Text="{Binding CourseTitle}" Watermark="t.ex. Grundkurs i C#" />
+
+          <TextBlock Classes="label" Text="Startdatum" />
+          <DatePicker SelectedDate="{Binding StartDate}" />
+
+          <TextBlock Classes="label" Text="Slutdatum" />
+          <DatePicker SelectedDate="{Binding EndDate}" />
+
+          <TextBlock Classes="label" Text="Kurstyp" />
+          <ComboBox ItemsSource="{Binding CourseTypes}" SelectedItem="{Binding SelectedType}" />
+
+          <Button Classes="primary" Content="Lägg till kurs" Margin="0,16,0,0"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                  Command="{Binding AddCourseCommand}" />
+        </StackPanel>
+      </Border>
+    </Grid>
+  </DockPanel>
+</UserControl>

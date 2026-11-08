@@ -1,0 +1,25 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:WestcoastEducation.ViewModels"
+             xmlns:views="using:WestcoastEducation.Views"
+             x:Class="WestcoastEducation.App"
+             RequestedThemeVariant="Light">
+
+  <!-- Kopplar varje sid-ViewModel till sin vy (MVVM). -->
+  <Application.DataTemplates>
+    <DataTemplate DataType="vm:CoursesViewModel">
+      <views:CoursesView />
+    </DataTemplate>
+    <DataTemplate DataType="vm:StudentsViewModel">
+      <views:StudentsView />
+    </DataTemplate>
+    <DataTemplate DataType="vm:TeachersViewModel">
+      <views:TeachersView />
+    </DataTemplate>
+  </Application.DataTemplates>
+
+  <Application.Styles>
+    <FluentTheme />
+    <StyleInclude Source="avares://Westcoast_Education/Styles/Theme.axaml" />
+  </Application.Styles>
+</Application>

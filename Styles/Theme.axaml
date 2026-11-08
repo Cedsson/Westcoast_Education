@@ -1,0 +1,165 @@
+<!--
+  Design och färgsättning för hela appen.
+  Allt refereras med {DynamicResource ...} så att färgerna byts direkt vid temabyte.
+-->
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <Styles.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.ThemeDictionaries>
+
+        <ResourceDictionary x:Key="Light">
+          <SolidColorBrush x:Key="BackgroundBrush" Color="#F3F5F9" />
+          <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF" />
+          <SolidColorBrush x:Key="SidebarBrush" Color="#0B3C5D" />
+          <SolidColorBrush x:Key="SidebarTextBrush" Color="#FFFFFF" />
+          <SolidColorBrush x:Key="SidebarHoverBrush" Color="#16557F" />
+          <SolidColorBrush x:Key="PrimaryBrush" Color="#1D7FC4" />
+          <SolidColorBrush x:Key="PrimaryHoverBrush" Color="#16679F" />
+          <SolidColorBrush x:Key="OnPrimaryBrush" Color="#FFFFFF" />
+          <SolidColorBrush x:Key="AccentBrush" Color="#F2A541" />
+          <SolidColorBrush x:Key="DangerBrush" Color="#C0392B" />
+          <SolidColorBrush x:Key="DangerHoverBrush" Color="#A93226" />
+          <SolidColorBrush x:Key="TextBrush" Color="#1E2933" />
+          <SolidColorBrush x:Key="MutedTextBrush" Color="#5F6B77" />
+          <SolidColorBrush x:Key="BorderBrush" Color="#D9DEE5" />
+          <SolidColorBrush x:Key="ChipBrush" Color="#E3EFF9" />
+          <SolidColorBrush x:Key="SuccessBrush" Color="#1E8449" />
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Dark">
+          <SolidColorBrush x:Key="BackgroundBrush" Color="#141A21" />
+          <SolidColorBrush x:Key="SurfaceBrush" Color="#1E2731" />
+          <SolidColorBrush x:Key="SidebarBrush" Color="#0A1622" />
+          <SolidColorBrush x:Key="SidebarTextBrush" Color="#E6EDF3" />
+          <SolidColorBrush x:Key="SidebarHoverBrush" Color="#1A2D40" />
+          <SolidColorBrush x:Key="PrimaryBrush" Color="#4BA3E3" />
+          <SolidColorBrush x:Key="PrimaryHoverBrush" Color="#6DB6EA" />
+          <SolidColorBrush x:Key="OnPrimaryBrush" Color="#0A1622" />
+          <SolidColorBrush x:Key="AccentBrush" Color="#F5B95F" />
+          <SolidColorBrush x:Key="DangerBrush" Color="#E5604F" />
+          <SolidColorBrush x:Key="DangerHoverBrush" Color="#EC8072" />
+          <SolidColorBrush x:Key="TextBrush" Color="#E6EDF3" />
+          <SolidColorBrush x:Key="MutedTextBrush" Color="#9AA7B4" />
+          <SolidColorBrush x:Key="BorderBrush" Color="#2E3A46" />
+          <SolidColorBrush x:Key="ChipBrush" Color="#24384B" />
+          <SolidColorBrush x:Key="SuccessBrush" Color="#58D68D" />
+        </ResourceDictionary>
+
+      </ResourceDictionary.ThemeDictionaries>
+
+      <CornerRadius x:Key="CardCornerRadius">10</CornerRadius>
+      <CornerRadius x:Key="ControlCornerRadius">6</CornerRadius>
+      <Thickness x:Key="CardPadding">20</Thickness>
+      <x:Double x:Key="HeadingFontSize">26</x:Double>
+      <x:Double x:Key="SubHeadingFontSize">17</x:Double>
+    </ResourceDictionary>
+  </Styles.Resources>
+
+  <!-- Texter -->
+  <Style Selector="Window">
+    <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+  </Style>
+  <Style Selector="TextBlock.h1">
+    <Setter Property="FontSize" Value="{DynamicResource HeadingFontSize}" />
+    <Setter Property="FontWeight" Value="Bold" />
+  </Style>
+  <Style Selector="TextBlock.h2">
+    <Setter Property="FontSize" Value="{DynamicResource SubHeadingFontSize}" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="Margin" Value="0,0,0,8" />
+  </Style>
+  <Style Selector="TextBlock.muted">
+    <Setter Property="Foreground" Value="{DynamicResource MutedTextBrush}" />
+  </Style>
+  <Style Selector="TextBlock.error">
+    <Setter Property="Foreground" Value="{DynamicResource DangerBrush}" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+  <Style Selector="TextBlock.label">
+    <Setter Property="Foreground" Value="{DynamicResource MutedTextBrush}" />
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="Margin" Value="0,6,0,2" />
+  </Style>
+
+  <!-- Kort / paneler -->
+  <Style Selector="Border.card">
+    <Setter Property="Background" Value="{DynamicResource SurfaceBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="{DynamicResource CardCornerRadius}" />
+    <Setter Property="Padding" Value="{DynamicResource CardPadding}" />
+  </Style>
+  <Style Selector="Border.chip">
+    <Setter Property="Background" Value="{DynamicResource ChipBrush}" />
+    <Setter Property="CornerRadius" Value="12" />
+    <Setter Property="Padding" Value="10,3,4,3" />
+    <Setter Property="Margin" Value="0,0,6,6" />
+  </Style>
+
+  <!-- Formulärfält -->
+  <Style Selector="TextBox, DatePicker, ComboBox">
+    <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+  </Style>
+
+  <!-- Knappar -->
+  <Style Selector="Button">
+    <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+    <Setter Property="Padding" Value="14,7" />
+  </Style>
+  <Style Selector="Button.primary">
+    <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource OnPrimaryBrush}" />
+  </Style>
+  <Style Selector="Button.primary:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource PrimaryHoverBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource OnPrimaryBrush}" />
+  </Style>
+  <Style Selector="Button.danger">
+    <Setter Property="Background" Value="{DynamicResource DangerBrush}" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+  </Style>
+  <Style Selector="Button.danger:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource DangerHoverBrush}" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+  </Style>
+  <Style Selector="Button.chipRemove">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Foreground" Value="{DynamicResource MutedTextBrush}" />
+    <Setter Property="Padding" Value="6,0" />
+    <Setter Property="MinHeight" Value="0" />
+    <Setter Property="Margin" Value="4,0,0,0" />
+  </Style>
+
+  <!-- Sidomeny -->
+  <Style Selector="Button.nav">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Foreground" Value="{DynamicResource SidebarTextBrush}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="FontSize" Value="15" />
+    <Setter Property="Padding" Value="16,10" />
+    <Setter Property="Margin" Value="8,2" />
+  </Style>
+  <Style Selector="Button.nav:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource SidebarHoverBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource SidebarTextBrush}" />
+  </Style>
+  <Style Selector="Button.nav.active">
+    <Setter Property="Background" Value="{DynamicResource SidebarHoverBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+    <Setter Property="BorderThickness" Value="4,0,0,0" />
+  </Style>
+
+  <!-- Listor -->
+  <Style Selector="ListBox">
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+  <Style Selector="ListBoxItem">
+    <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+    <Setter Property="Padding" Value="12,8" />
+  </Style>
+</Styles>
