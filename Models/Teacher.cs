@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace WestcoastEducation.Models;
 
-/// <summary>Lärare med kompetensområden.</summary>
+//Lärare med kompetensområden.</summary>
 public class Teacher : Person
 {
     public List<string> Expertise { get; set; } = new();

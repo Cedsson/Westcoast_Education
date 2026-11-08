@@ -2,7 +2,7 @@ using System.Text.Json;
 
 namespace WestcoastEducation.Services;
 
-/// <summary>Anslutningsuppgifter till RestDb.io, läses från appsettings.json.</summary>
+//Anslutningsuppgifter till RestDb.io, läses från appsettings.json.</summary>
 public class RestDbSettings
 {
     public string BaseUrl { get; set; } = "";

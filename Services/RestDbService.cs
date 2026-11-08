@@ -4,11 +4,11 @@ using System.Text.Json.Serialization;
 
 namespace WestcoastEducation.Services;
 
-/// <summary>Pratar med RestDb.io:s REST-API: {BaseUrl}/rest/{collection}.</summary>
+//Pratar med RestDb.io:s REST-API: {BaseUrl}/rest/{collection}.</summary>
 public class RestDbService : IRestDbService
 {
-    // Klienten skapas först vid första anropet, så att ett konfigurationsfel
-    // visas som ett felmeddelande i appen i stället för att appen kraschar vid start.
+    //Klienten skapas först vid första anropet, så att ett konfigurationsfel
+    //visas som ett felmeddelande i appen i stället för att appen kraschar vid start.
     private readonly Lazy<HttpClient> _client;
     private HttpClient _http => _client.Value;
 

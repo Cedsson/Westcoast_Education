@@ -6,7 +6,7 @@ using WestcoastEducation.Services;
 
 namespace WestcoastEducation.ViewModels;
 
-/// <summary>Huvudfönstrets ViewModel: navigering mellan sidorna och temabyte.</summary>
+//Huvudfönstrets ViewModel: navigering mellan sidorna och temabyte.</summary>
 public partial class MainWindowViewModel : ViewModelBase
 {
     public CoursesViewModel Courses { get; }
@@ -48,7 +48,7 @@ public partial class MainWindowViewModel : ViewModelBase
         _ = page.EnsureLoadedAsync();
     }
 
-    /// <summary>Byter mellan ljust och mörkt tema. Alla färger är DynamicResource och uppdateras direkt.</summary>
+    //Byter mellan ljust och mörkt tema. Alla färger är DynamicResource och uppdateras direkt.</summary>
     partial void OnIsDarkThemeChanged(bool value)
     {
         if (Application.Current != null)

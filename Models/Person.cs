@@ -2,10 +2,10 @@ using System.Text.Json.Serialization;
 
 namespace WestcoastEducation.Models;
 
-/// <summary>Abstrakt basklass med gemensam data för alla personer.</summary>
+//Abstrakt basklass med gemensam data för alla personer.</summary>
 public abstract class Person
 {
-    /// <summary>RestDb.io:s unika id för posten.</summary>
+    //RestDb.io:s unika id för posten.</summary>
     [JsonPropertyName("_id")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? Id { get; set; }

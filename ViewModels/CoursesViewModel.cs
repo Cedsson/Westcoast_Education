@@ -6,7 +6,7 @@ using WestcoastEducation.Services;
 
 namespace WestcoastEducation.ViewModels;
 
-/// <summary>Listar, lägger till och raderar kurser.</summary>
+//Listar, lägger till och raderar kurser.</summary>
 public partial class CoursesViewModel : PageViewModelBase
 {
     private readonly IRestDbService _db;
@@ -23,7 +23,7 @@ public partial class CoursesViewModel : PageViewModelBase
     [NotifyCanExecuteChangedFor(nameof(DeleteCourseCommand))]
     private Course? _selectedCourse;
 
-    // --- Formulär för ny kurs ---
+    //Formulär för ny kurs
     [ObservableProperty] private string _courseNumber = "";
     [ObservableProperty] private string _courseTitle = "";
     [ObservableProperty] private DateTimeOffset? _startDate = DateTimeOffset.Now.Date;

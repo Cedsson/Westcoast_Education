@@ -6,7 +6,7 @@ using WestcoastEducation.Services;
 
 namespace WestcoastEducation.ViewModels;
 
-/// <summary>Listar och lägger till lärare samt hanterar en lärares kompetensområden.</summary>
+//Listar och lägger till lärare samt hanterar en lärares kompetensområden.</summary>
 public partial class TeachersViewModel : PageViewModelBase
 {
     private readonly IRestDbService _db;
@@ -17,7 +17,7 @@ public partial class TeachersViewModel : PageViewModelBase
 
     public ObservableCollection<Teacher> Teachers { get; } = new();
 
-    /// <summary>Kompetensområden för vald lärare.</summary>
+    //Kompetensområden för vald lärare.</summary>
     public ObservableCollection<string> SelectedExpertise { get; } = new();
 
     [ObservableProperty]
@@ -31,7 +31,7 @@ public partial class TeachersViewModel : PageViewModelBase
     [NotifyCanExecuteChangedFor(nameof(AddExpertiseCommand))]
     private string _newExpertise = "";
 
-    // --- Formulär för ny lärare ---
+    //Formulär för ny lärare
     [ObservableProperty] private string _firstName = "";
     [ObservableProperty] private string _lastName = "";
     [ObservableProperty] private string _personalNumber = "";
@@ -123,7 +123,7 @@ public partial class TeachersViewModel : PageViewModelBase
     private Task RemoveExpertise(string area) =>
         SaveExpertiseAsync(SelectedExpertise.Where(e => e != area).ToList(), $"{area} togs bort.");
 
-    /// <summary>Sparar lärarens nya lista med kompetensområden i RestDb och uppdaterar listan.</summary>
+    //Sparar lärarens nya lista med kompetensområden i RestDb och uppdaterar listan.</summary>
     private async Task SaveExpertiseAsync(List<string> expertise, string successMessage)
     {
         var teacher = SelectedTeacher;
@@ -147,7 +147,7 @@ public partial class TeachersViewModel : PageViewModelBase
         {
             await _db.UpdateAsync(Collections.Teachers, teacher.Id, updated);
 
-            // Byt ut posten i listan så att vyn visar de nya kompetensområdena.
+            //Byt ut posten i listan så att vyn visar de nya kompetensområdena.
             var index = Teachers.IndexOf(teacher);
             if (index >= 0)
                 Teachers[index] = updated;

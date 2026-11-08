@@ -1,6 +1,6 @@
 namespace WestcoastEducation.Services;
 
-/// <summary>Generisk datahantering mot RestDb.io-collections.</summary>
+//Generisk datahantering mot RestDb.io-collections.</summary>
 public interface IRestDbService
 {
     Task<List<T>> GetAllAsync<T>(string collection);

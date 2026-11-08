@@ -6,7 +6,7 @@ using WestcoastEducation.Services;
 
 namespace WestcoastEducation.ViewModels;
 
-/// <summary>Listar och lägger till studenter.</summary>
+//Listar och lägger till studenter.</summary>
 public partial class StudentsViewModel : PageViewModelBase
 {
     private readonly IRestDbService _db;
@@ -17,7 +17,7 @@ public partial class StudentsViewModel : PageViewModelBase
 
     public ObservableCollection<Student> Students { get; } = new();
 
-    // --- Formulär för ny student ---
+    //Formulär för ny student
     [ObservableProperty] private string _firstName = "";
     [ObservableProperty] private string _lastName = "";
     [ObservableProperty] private string _personalNumber = "";

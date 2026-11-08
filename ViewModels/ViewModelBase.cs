@@ -2,7 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace WestcoastEducation.ViewModels;
 
-/// <summary>Basklass för alla ViewModels med gemensam status- och felhantering.</summary>
+//Basklass för alla ViewModels med gemensam status- och felhantering.</summary>
 public abstract partial class ViewModelBase : ObservableObject
 {
     [ObservableProperty]
@@ -26,7 +26,7 @@ public abstract partial class ViewModelBase : ObservableObject
         StatusMessage = message;
     }
 
-    /// <summary>Kör ett asynkront jobb och fångar fel så att de visas i statusraden.</summary>
+    //Kör ett asynkront jobb och fångar fel så att de visas i statusraden.</summary>
     protected async Task RunAsync(Func<Task> action, string? successMessage = null)
     {
         if (IsBusy)
@@ -50,7 +50,7 @@ public abstract partial class ViewModelBase : ObservableObject
     }
 }
 
-/// <summary>En sida i appen som laddar sin data första gången den visas.</summary>
+//En sida i appen som laddar sin data första gången den visas.</summary>
 public abstract class PageViewModelBase : ViewModelBase
 {
     private bool _loaded;

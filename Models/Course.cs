@@ -2,10 +2,10 @@ using System.Text.Json.Serialization;
 
 namespace WestcoastEducation.Models;
 
-/// <summary>En kurs som erbjuds av WestCoast Education.</summary>
+//En kurs som erbjuds av WestCoast Education.</summary>
 public class Course
 {
-    /// <summary>RestDb.io:s unika id för posten.</summary>
+    //RestDb.io:s unika id för posten.</summary>
     [JsonPropertyName("_id")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? Id { get; set; }
@@ -16,7 +16,7 @@ public class Course
     public DateTime EndDate { get; set; }
     public CourseType Type { get; set; }
 
-    /// <summary>Längd i dagar (inklusive start- och slutdag).</summary>
+    //Längd i dagar (inklusive start- och slutdag).</summary>
     [JsonIgnore]
     public int LengthInDays => (EndDate.Date - StartDate.Date).Days + 1;
 
